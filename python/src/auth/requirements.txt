@@ -1,2 +1,5 @@
 pylint==2.17.1
 jedi==0.18.2
+PyJWT==2.6.0
+Flask==2.2.3
+flask-mysqldb==1.0.1
