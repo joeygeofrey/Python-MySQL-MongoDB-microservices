@@ -25,7 +25,7 @@ def login():
     res = cur.execute(
         "SELECT email, password FROM user WHERE email=%s", (auth.username,)
     )
-
+    # login function
     if res > 0:
         user_row = cur.fetchone()
         email = user_row[0]
@@ -37,3 +37,19 @@ def login():
             return createJWT(auth.username, os.environ.get("JWT_SECRET"), True)
     else:
         return "invalid credentials", 401
+
+# create json web token
+def createJWT(username, secret, perm):
+    return jwt.encode(
+        {
+            "username": username,
+            "exp": datetime.datetime.now(tz=datetime.timezone.utc)
+            + datetime.timedelta(days=1),
+            "iat": datetime.datetime.utcnow(),
+            "admin": perm,
+        },
+        secret,
+        algorithm="HS256",
+    )
+
+if __name__ == "__main__":
