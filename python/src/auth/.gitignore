@@ -2,3 +2,4 @@ bin
 include
 lib
 pyvenv.cfg
+k8s/secret.yml
