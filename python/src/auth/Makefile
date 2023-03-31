@@ -1,5 +1,5 @@
 DOCKER_USERNAME ?= joeygeofrey
-APPLICATION_NAME ?= media-converter
+APPLICATION_NAME ?= auth
 
 install:
 	# run inside a virtual environment
@@ -19,7 +19,6 @@ build:
 	docker build --tag ${DOCKER_USERNAME}/${APPLICATION_NAME} .
 
 push:
-	docker tag ${APPLICATION_NAME} ${DOCKER_USERNAME}/${APPLICATION_NAME}:latest
 	docker push ${DOCKER_USERNAME}/${APPLICATION_NAME}
 
 all: install lint build push
