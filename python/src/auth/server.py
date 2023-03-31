@@ -1,4 +1,6 @@
-import jwt, datetime, os
+import jwt
+import datetime
+import os
 from flask import Flask, request
 from flask_mysqldb import MySQL
 
@@ -41,8 +43,8 @@ def login():
 # route for validation
 @server.route("/validate", methods=["POST"])
 def validate():
-    encoded_jwt = request.headers["Authorization"] 
-    
+    encoded_jwt = request.headers["Authorization"]
+
     if not encoded_jwt:
         return "missing credentials", 401
 
