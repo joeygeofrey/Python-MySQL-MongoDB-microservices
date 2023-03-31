@@ -2,9 +2,14 @@ install:
 	# run inside a virtual environment
 	pip install --no-cache-dir --upgrade setuptools wheel --use-pep517 pip &&\
 		pip install --no-cache-dir --trusted-host pypi.python.org -r requirements.txt
+	# Install hadolint
+	# wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v2.12.0/hadolint-Linux-x86_64 &&\
+    # chmod +x /bin/hadolint
 
 lint:
-	# run inside a virtual environment
-	pylint server.pylint
+	# lint Dockerfile
+	hadolint Dockerfile
+	# lint source code
+	pylint --disable=C,R1705,W0702 server.py
 
 all: install lint
