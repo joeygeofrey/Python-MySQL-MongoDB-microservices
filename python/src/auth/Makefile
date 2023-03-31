@@ -22,4 +22,4 @@ push:
 	docker tag ${APPLICATION_NAME} ${DOCKER_USERNAME}/${APPLICATION_NAME}:latest
 	docker push ${DOCKER_USERNAME}/${APPLICATION_NAME}
 
-all: install lint
+all: install lint build push
