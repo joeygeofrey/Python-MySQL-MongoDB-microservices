@@ -3,8 +3,8 @@ install:
 	pip install --no-cache-dir --upgrade setuptools wheel --use-pep517 pip &&\
 		pip install --no-cache-dir --trusted-host pypi.python.org -r requirements.txt
 	# Install hadolint
-	# wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v2.12.0/hadolint-Linux-x86_64 &&\
-    # chmod +x /bin/hadolint
+	wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v2.12.0/hadolint-Linux-x86_64 &&\
+    chmod +x /bin/hadolint
 
 lint:
 	# lint Dockerfile
