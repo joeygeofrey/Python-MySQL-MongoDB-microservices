@@ -16,5 +16,11 @@ mongo = PyMongo(server)
 # allow storing and retrieving files using GridFS within MongoDB
 fs = gridfs.GridFS(mongo.db)
 
+# create connection to RabbitMQ
 connection = pika.BlockingConnection(pika.ConnectionParameters('rabbitmq'))
 channel = connection.channel()
+
+# create login route to communicate with auth service
+@server.route("/login", methods=['POST'])
+def login():
+    token, err = access.login(request)
